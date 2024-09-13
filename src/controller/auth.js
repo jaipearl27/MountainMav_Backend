@@ -1,6 +1,6 @@
 // ----------------------------------------Imports-----------------------------------------------
 import { asyncHandler } from "../utils/errorHandler/asyncHandler.js";
-import { authModel } from "../model/authModel.js";
+import { authModel } from "../model/auth.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { saveAccessTokenToCookie } from "../utils/index.js";
@@ -181,7 +181,7 @@ export const signup = asyncHandler(async (req, res) => {
 // @route - POST /auth/logout
 // @access - PUBLIC
 export const logout = asyncHandler(async (req, res) => {
-  res.clearCookie("HEADKAYHEADDEGI_ACCESS_TOKEN");
+  res.clearCookie(process.env.ACCESS_TOKEN_NAME);
   res.status(200).json({
     success: true,
     message: "Logged Out Successfully",

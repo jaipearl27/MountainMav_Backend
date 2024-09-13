@@ -39,3 +39,16 @@ export const uploadFile = async (files) => {
     return { status: false, message: error?.message };
   }
 };
+
+
+export const deleteFilesFromCloudinary = async (fileNames) => {
+  const fileNameLen = fileNames.length
+  for(let i=0;i<fileNameLen;i++){
+   cloudinary.uploader.destroy(fileNames[i]).then((res) => {
+      console.log(res)
+    }).catch((err) => {
+      return {status: false, error: err}
+    })
+  } 
+  return {status: true, message: 'file deleted successfully'}
+}
