@@ -9,6 +9,7 @@ import { error } from "./src/middleware/error.js";
 import authRouter from "./src/routes/auth.js";
 import treksRouter from "./src/routes/treks.js";
 import toursRouter from "./src/routes/tours.js";
+import titlesRouter from "./src/routes/titles.js";
 
 dotenv.config();
 
@@ -37,6 +38,8 @@ app.use(
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/treks", treksRouter);
 app.use("/api/v1/tours", toursRouter);
+app.use("/api/v1/titles", titlesRouter);
+
 
 
 app.use(error);

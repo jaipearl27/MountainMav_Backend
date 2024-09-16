@@ -2,6 +2,8 @@ import { asyncHandler } from "../utils/errorHandler/asyncHandler.js";
 import { toursModel } from "../model/tours.js";
 import { uploadFile } from "../utils/cloudinary.js";
 
+
+
 export const getTours = asyncHandler(async (req, res) => {
   const limit = req?.query?.limit || 12;
   const page = req?.query?.page || 1;

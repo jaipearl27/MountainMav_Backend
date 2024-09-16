@@ -2,6 +2,7 @@ import { asyncHandler } from "../utils/errorHandler/asyncHandler.js";
 import { treksModel } from "../model/treks.js";
 import { uploadFile } from "../utils/cloudinary.js";
 
+
 export const getTreks = asyncHandler(async (req, res) => {
   const limit = req?.query?.limit || 12;
   const page = req?.query?.page || 1;
