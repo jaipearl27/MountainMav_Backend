@@ -15,7 +15,7 @@ const toursSchema = new mongoose.Schema({
         required: [true, 'Content is requried']
     },
     banner: {
-        type: String,
+        type: [],
         required: [true, 'Banner is requried']
     },
     gallery: {

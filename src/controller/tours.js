@@ -8,14 +8,14 @@ export const getTours = asyncHandler(async (req, res) => {
   const skip = (page - 1) * limit;
   let totalPages = 0;
 
-  const totalItems = await toursModel.countDocuments();
-  totalPages = Math.ceil(totalItems / limit);
+  // const totalItems = await toursModel.countDocuments();
+  // totalPages = Math.ceil(totalItems / limit);
 
   const result = await toursModel
     .find()
     .select("title banner")
-    .skip(skip)
-    .limit(limit);
+    // .skip(skip)
+    // .limit(limit);
 
   res.status(200).json({ status: true, totalPages, data: result });
 });

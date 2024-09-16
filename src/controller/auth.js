@@ -80,7 +80,7 @@ export const refreshToken = asyncHandler(async (req, res) => {
   }
 
   // clearing the existing cookie
-  res.clearCookie("ACCESS_TOKEN");
+  res.clearCookie(process.env.ACCESS_TOKEN_NAME);
 
   // refreshToken - generating a new refresh token with extended time
   const refreshToken = jwt.sign(
