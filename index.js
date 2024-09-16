@@ -26,6 +26,8 @@ app.use(
       "http://localhost:3001",
       "http://localhost:5173",
       "http://localhost:5174",
+      "https://mountainmavericks.in",
+      "https://admin.mountainmavericks.in",
     ],
     credentials: true,
     methods: ["GET", "PUT", "POST", "PATCH", "DELETE"],
