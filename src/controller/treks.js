@@ -7,16 +7,16 @@ export const getTreks = asyncHandler(async (req, res) => {
   const limit = req?.query?.limit || 12;
   const page = req?.query?.page || 1;
   const skip = (page - 1) * limit;
-  let totalPages = 0;
+  let totalPages = 1;
 
-  // const totalItems = await treksModel.countDocuments();
-  // totalPages = Math.ceil(totalItems / limit);
+  const totalItems = await treksModel.countDocuments();
+  totalPages = Math.ceil(totalItems / limit);
 
   const result = await treksModel
     .find()
     .select("title banner")
-    // .skip(skip)
-    // .limit(limit);
+    .skip(skip)
+    .limit(limit);
 
   res.status(200).json({ status: true, totalPages, data: result });
 });
