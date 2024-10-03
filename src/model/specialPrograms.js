@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const specialTripsSchema = new mongoose.Schema({
+const specialProgramsSchema = new mongoose.Schema({
     title: {
         type: String,
         required: [true, 'Title is required']
@@ -24,4 +24,4 @@ const specialTripsSchema = new mongoose.Schema({
     }
 },{timestamps: true})
 
-export const specialTripsModel = mongoose.model('specialTrips', specialTripsSchema, 'specialTrips')
+export const specialProgramsModel = mongoose.model('specialPrograms', specialProgramsSchema, 'specialPrograms')

@@ -1,19 +1,19 @@
 import { asyncHandler } from "../utils/errorHandler/asyncHandler.js";
-import { specialTripsModel } from "../model/specialTrips.js";
+import { specialProgramsModel } from "../model/specialPrograms.js";
 import { uploadFile } from "../utils/cloudinary.js";
 
 
 
-export const getSpecialTrips = asyncHandler(async (req, res) => {
+export const getSpecialPrograms = asyncHandler(async (req, res) => {
   const limit = req?.query?.limit || 12;
   const page = req?.query?.page || 1;
   const skip = (page - 1) * limit;
   let totalPages = 1;
 
-  const totalItems = await specialTripsModel.countDocuments();
+  const totalItems = await specialProgramsModel.countDocuments();
   totalPages = Math.ceil(totalItems / limit);
 
-  const result = await specialTripsModel
+  const result = await specialProgramsModel
     .find()
     .select("title banner")
     .skip(skip)
@@ -23,17 +23,17 @@ export const getSpecialTrips = asyncHandler(async (req, res) => {
 });
 
 
-export const getSpecialTrip = asyncHandler(async (req, res) => {
+export const getSpecialProgram = asyncHandler(async (req, res) => {
   const { id } = req.params;
   if(!id){
     res.status(500).json({status: false, message: 'Missing ID'})
   }
-  const result = await specialTripsModel.findById(id);
+  const result = await specialProgramsModel.findById(id);
 
   res.status(200).json({ status: true, data: result });
 });
 
-export const addSpecialTrip = asyncHandler(async (req, res) => {
+export const addSpecialProgram = asyncHandler(async (req, res) => {
   const bannerImg = await uploadFile(req?.files);
   // const gallery;
 
@@ -43,11 +43,11 @@ export const addSpecialTrip = asyncHandler(async (req, res) => {
     banner: bannerImg.result[0],
   };
 
-  await specialTripsModel.create(payload);
+  await specialProgramsModel.create(payload);
   res.status(200).json({ status: true, message: "Saved successfully" });
 });
 
-export const updateSpecialTrip = asyncHandler(async (req, res) => {
+export const updateSpecialProgram = asyncHandler(async (req, res) => {
   const { id } = req.params;
   if(!id){
     res.status(500).json({status: false, message: 'Missing ID'})
@@ -64,16 +64,16 @@ export const updateSpecialTrip = asyncHandler(async (req, res) => {
     payload.banner = bannerImg.result[0];
   }
 
-  await specialTripsModel.findOneAndUpdate({ _id: id }, payload);
+  await specialProgramsModel.findOneAndUpdate({ _id: id }, payload);
   res.status(200).json({ status: true, message: "Updated successfully" });
 });
 
-export const deleteSpecialTrip = asyncHandler(async (req, res) => {
+export const deleteSpecialProgram = asyncHandler(async (req, res) => {
   const { id } = req.params;
   if(!id){
     res.status(500).json({status: false, message: 'Missing ID'})
   }
-  const isIdValid = await specialTripsModel.findByIdAndDelete(id);
+  const isIdValid = await specialProgramsModel.findByIdAndDelete(id);
   if (!isIdValid) {
     return res
       .status(400)

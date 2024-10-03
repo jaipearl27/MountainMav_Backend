@@ -12,7 +12,7 @@ import toursRouter from "./src/routes/tours.js";
 import titlesRouter from "./src/routes/titles.js";
 import galleryRouter from "./src/routes/gallery.js";
 import importantDocRouter from "./src/routes/importantDocs.js";
-import specialTripsRouter from "./src/routes/specialTrips.js";
+import specialProgramsRouter from "./src/routes/specialPrograms.js";
 
 dotenv.config();
 
@@ -46,7 +46,7 @@ app.use("/api/v1/tours", toursRouter);
 app.use("/api/v1/titles", titlesRouter);
 app.use("/api/v1/gallery",galleryRouter);
 app.use("/api/v1/importantDocs",importantDocRouter);
-app.use("/api/v1/specialTrips",specialTripsRouter);
+app.use("/api/v1/specialPrograms",specialProgramsRouter);
 
 
 
