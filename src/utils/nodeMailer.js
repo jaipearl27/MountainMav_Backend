@@ -80,19 +80,19 @@ export const sendContactMail = async (userData) => {
           <div class="header"></div>
           <table>
               <tr>
-                  <td><strong>Name</strong></td>
+                  <td><strong>Name:</strong></td>
                   <td>${userData.name}</td>
               </tr>
               <tr>
-                  <td><strong>E-Mail</strong></td>
+                  <td><strong>E-Mail:</strong></td>
                   <td>${userData.email}</td>
               </tr>
               <tr>
-                  <td><strong>Mobile</strong></td>
+                  <td><strong>Mobile:</strong></td>
                   <td>${userData.mobile}</td>
               </tr>
               <tr>
-                  <td><strong>Mobile</strong></td>
+                  <td><strong>Message:</strong></td>
                   <td>${userData.message}</td>
               </tr>
              
