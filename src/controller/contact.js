@@ -32,3 +32,20 @@ export const getAllContacts = asyncHandler(async (req, res) => {
 
   res.status(200).json({ status: true, totalPages, data: result });
 });
+
+
+
+export const deleteContact = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  if(!id){
+    res.status(500).json({status: false, message: 'Missing ID'})
+  }
+  const isIdValid = await contactModel.findByIdAndDelete(id);
+  if (!isIdValid) {
+    return res
+      .status(400)
+      .json({ status: false, messaeg: "No Data found with given id!!" });
+  }
+
+  res.status(200).json({ status: true, message: "Deleted successfully" });
+});
